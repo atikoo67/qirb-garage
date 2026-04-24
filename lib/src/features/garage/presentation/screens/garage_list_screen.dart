@@ -70,10 +70,9 @@ class GarageListScreen extends HookConsumerWidget {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // Header Section
           Container(
             color: Colors.white,
-            padding: EdgeInsets.all(AppSpacing.lg.w),
+            padding: EdgeInsets.all(AppSpacing.sm.w),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -82,7 +81,7 @@ class GarageListScreen extends HookConsumerWidget {
                   style: textTheme.headlineMedium?.copyWith(
                     fontWeight: FontWeight.bold,
                     color: Colors.black,
-                    fontSize: 28.sp,
+                    fontSize: 25.sp,
                   ),
                 ),
                 Text(
@@ -109,7 +108,7 @@ class GarageListScreen extends HookConsumerWidget {
             selectedCategory: selectedCategory.value,
             onCategorySelected: (category) => selectedCategory.value = category,
           ),
-
+          SizedBox(height: AppSpacing.xxs.h),
           // Garage List
           Expanded(
             child: ListView.builder(
@@ -193,13 +192,13 @@ class _GarageCard extends StatelessWidget {
                       BorderRadius.horizontal(left: Radius.circular(12.r)),
                   child: Image.asset(
                     image,
-                    width: 120.w,
-                    height: 140.h,
+                    width: 90.w,
+                    height: 100.h,
                     fit: BoxFit.cover,
                     errorBuilder: (context, error, stackTrace) {
                       return Container(
-                        width: 120.w,
-                        height: 140.h,
+                        width: 90.w,
+                        height: 100.h,
                         color: Colors.grey.shade200,
                         child: Icon(
                           Icons.garage,
@@ -245,6 +244,7 @@ class _GarageCard extends StatelessWidget {
                 padding: EdgeInsets.all(AppSpacing.md.w),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     // Name
                     Text(
@@ -264,7 +264,7 @@ class _GarageCard extends StatelessWidget {
                             index < rating.floor()
                                 ? Icons.star
                                 : Icons.star_border,
-                            size: 14.sp,
+                            size: 15.sp,
                             color: Colors.amber,
                           );
                         }),
@@ -278,30 +278,8 @@ class _GarageCard extends StatelessWidget {
                         ),
                       ],
                     ),
-                    SizedBox(height: AppSpacing.xs.h),
+                    SizedBox(height: AppSpacing.ml.h),
                     // Location with distance
-                    Row(
-                      children: [
-                        Icon(
-                          Icons.location_on,
-                          size: 12.sp,
-                          color: colorScheme.primary,
-                        ),
-                        SizedBox(width: 4.w),
-                        Expanded(
-                          child: Text(
-                            '$location • $distance',
-                            style: textTheme.bodySmall?.copyWith(
-                              color: Colors.black54,
-                              fontSize: 11.sp,
-                            ),
-                            overflow: TextOverflow.ellipsis,
-                          ),
-                        ),
-                      ],
-                    ),
-                    SizedBox(height: AppSpacing.sm.h),
-                    // Services
                     Wrap(
                       spacing: 4.w,
                       runSpacing: 4.h,
@@ -320,12 +298,35 @@ class _GarageCard extends StatelessWidget {
                             style: textTheme.bodySmall?.copyWith(
                               color: colorScheme.primary,
                               fontWeight: FontWeight.w600,
-                              fontSize: 9.sp,
+                              fontSize: 12.sp,
                             ),
                           ),
                         );
                       }).toList(),
                     ),
+                    Spacer(),
+                    Row(
+                      children: [
+                        Icon(
+                          Icons.location_on,
+                          size: 12.sp,
+                          color: colorScheme.primary,
+                        ),
+                        SizedBox(width: 4.w),
+                        Expanded(
+                          child: Text(
+                            '$location • $distance',
+                            style: textTheme.bodySmall?.copyWith(
+                              color: Colors.black54,
+                              fontSize: 10.sp,
+                            ),
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                        ),
+                      ],
+                    ),
+                    SizedBox(height: AppSpacing.sm.h),
+                    // Services
                   ],
                 ),
               ),

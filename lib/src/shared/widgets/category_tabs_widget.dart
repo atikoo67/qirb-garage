@@ -21,7 +21,7 @@ class CategoryTabsWidget extends StatelessWidget {
 
     return Container(
       color: Colors.white,
-      height: 50.h,
+      height: 45.h,
       padding: EdgeInsets.symmetric(vertical: AppSpacing.sm.h),
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
@@ -37,7 +37,7 @@ class CategoryTabsWidget extends StatelessWidget {
               child: Container(
                 padding: EdgeInsets.symmetric(
                   horizontal: AppSpacing.lg.w,
-                  vertical: AppSpacing.sm.h,
+                  vertical: AppSpacing.xs.h,
                 ),
                 decoration: BoxDecoration(
                   color: isSelected ? colorScheme.primary : Colors.transparent,
@@ -49,7 +49,7 @@ class CategoryTabsWidget extends StatelessWidget {
                     style: textTheme.bodyMedium?.copyWith(
                       color: isSelected ? Colors.white : Colors.black54,
                       fontWeight: FontWeight.w600,
-                      fontSize: 13.sp,
+                      fontSize: 10.sp,
                     ),
                   ),
                 ),

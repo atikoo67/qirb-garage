@@ -29,7 +29,7 @@ class AutocoreAppBar extends StatelessWidget implements PreferredSizeWidget {
           ),
           SizedBox(width: AppSpacing.xs.w),
           Text(
-            'AUTOCORE',
+            'QirbGarage',
             style: textTheme.titleLarge?.copyWith(
               fontWeight: FontWeight.bold,
               color: Colors.black,

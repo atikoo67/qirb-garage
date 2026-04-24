@@ -386,24 +386,33 @@ class SignupScreen extends HookConsumerWidget {
               SizedBox(height: AppSpacing.xl.h),
 
               // Social Login Buttons
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  _SocialButton(
-                    icon: AppAssets.googleIcon,
-                    onPressed: () {},
+              SizedBox(
+                width: double.infinity,
+                height: 56.h,
+                child: OutlinedButton.icon(
+                  onPressed: () {},
+                  style: OutlinedButton.styleFrom(
+                    foregroundColor: Colors.black87,
+                    side: BorderSide(color: Colors.black12, width: 1.5),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(16.r),
+                    ),
+                    padding: EdgeInsets.symmetric(horizontal: AppSpacing.md.w),
                   ),
-                  SizedBox(width: AppSpacing.md.w),
-                  _SocialButton(
-                    icon: AppAssets.facebookIcon,
-                    onPressed: () {},
+                  icon: SvgPicture.asset(
+                    AppAssets.googleIcon,
+                    width: 22.w,
+                    height: 22.h,
                   ),
-                  SizedBox(width: AppSpacing.md.w),
-                  _SocialButton(
-                    icon: AppAssets.appleIcon,
-                    onPressed: () {},
+                  label: Text(
+                    'Continue with Google',
+                    style: tt.titleMedium?.copyWith(
+                      color: Colors.black87,
+                      fontWeight: FontWeight.w500,
+                      fontSize: 15.sp,
+                    ),
                   ),
-                ],
+                ),
               ),
 
               SizedBox(height: AppSpacing.xxxl.h),

@@ -108,7 +108,7 @@ class NavigationPage extends HookConsumerWidget {
               // Get Started Button
               SizedBox(
                 width: double.infinity,
-                height: 54.h,
+                height: 45.h,
                 child: ElevatedButton(
                   onPressed: () {
                     context.go('/main');

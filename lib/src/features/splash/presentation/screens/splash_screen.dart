@@ -16,7 +16,8 @@ class SplashScreen extends HookConsumerWidget {
 
         // Check if first time user
         final prefs = await SharedPreferences.getInstance();
-        final isFirstTime = prefs.getBool('isFirstTime') ?? true;
+        // final isFirstTime = prefs.getBool('isFirstTime') ?? true;
+        final isFirstTime = true;
 
         if (isFirstTime) {
           // First time user - show onboarding

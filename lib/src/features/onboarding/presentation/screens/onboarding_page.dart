@@ -13,24 +13,24 @@ class OnboardingPage extends HookWidget {
     final pageController = usePageController();
     final currentIndex = useState(0);
 
-    final List<Map<String, dynamic>> onboardingData = useMemoized(() => [
+    final List<Map<String, String>> onboardingData = useMemoized(() => [
           {
             'title': 'Find Nearby\nGarages',
             'subtitle':
                 'Discover trusted garages near you with verified specialists and real-time availability',
-            'icon': Icons.location_on_outlined,
+            'image': "assets/onboarding/repair_garage.svg",
           },
           {
             'title': 'View Repair\nGuides',
             'subtitle':
                 'Learn how to fix common vehicle issues with step-by-step guides and expert tips',
-            'icon': Icons.menu_book_outlined,
+            'image': 'assets/onboarding/guides.svg',
           },
           {
             'title': 'Quality Spare\nParts',
             'subtitle':
                 'Find genuine and quality spare parts for your vehicle from trusted sellers',
-            'icon': Icons.build_outlined,
+            'image': "assets/onboarding/spare_part.svg",
           },
         ]);
 
@@ -40,6 +40,10 @@ class OnboardingPage extends HookWidget {
 
     void onSkip() {
       context.go(AppRoutes.home);
+    }
+
+    void onSignUp() {
+      context.go(AppRoutes.roleSelection);
     }
 
     return _OnboardingView(
@@ -52,6 +56,7 @@ class OnboardingPage extends HookWidget {
       onPageChanged: (index) => currentIndex.value = index,
       onGetStarted: onGetStarted,
       onSkip: onSkip,
+      onSignUp: onSignUp,
     );
   }
 }
@@ -74,7 +79,7 @@ class _OnboardingView extends StatelessWidget {
   final TextTheme textTheme;
   final PageController pageController;
   final int currentIndex;
-  final List<Map<String, dynamic>> onboardingData;
+  final List<Map<String, String>> onboardingData;
   final ValueChanged<int> onPageChanged;
   final VoidCallback onGetStarted;
   final VoidCallback onSkip;
@@ -125,29 +130,28 @@ class _OnboardingView extends StatelessWidget {
                     ],
                   ),
                   // Skip Button
-                  if (!isLastPage)
-                    TextButton(
-                      onPressed: onSkip,
-                      style: TextButton.styleFrom(
-                        foregroundColor: Colors.black54,
-                        padding: EdgeInsets.symmetric(
-                          horizontal: AppSpacing.md.w,
-                          vertical: AppSpacing.sm.h,
-                        ),
-                      ),
-                      child: Text(
-                        'Skip',
-                        style: textTheme.bodyMedium?.copyWith(
-                          color: Colors.black54,
-                          fontWeight: FontWeight.w500,
-                        ),
+
+                  TextButton(
+                    onPressed: onSkip,
+                    style: TextButton.styleFrom(
+                      foregroundColor: Colors.black54,
+                      padding: EdgeInsets.symmetric(
+                        horizontal: AppSpacing.md.w,
+                        vertical: AppSpacing.sm.h,
                       ),
                     ),
+                    child: Text(
+                      'Skip',
+                      style: textTheme.bodyMedium?.copyWith(
+                        color: Colors.black54,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                  ),
                 ],
               ),
             ),
 
-            // PageView
             Expanded(
               child: PageView.builder(
                 controller: pageController,
@@ -161,19 +165,19 @@ class _OnboardingView extends StatelessWidget {
                       children: [
                         // Icon Illustration
                         Container(
-                          width: 140.w,
-                          height: 140.w,
+                          width: 180.w,
+                          height: 180.w,
                           decoration: BoxDecoration(
                             color: colorScheme.primary.withValues(alpha: 0.08),
                             borderRadius: BorderRadius.circular(70.r),
                           ),
-                          child: Icon(
-                            onboardingData[index]['icon'] as IconData,
-                            size: 70.sp,
-                            color: colorScheme.primary,
+                          child: SvgPicture.asset(
+                            onboardingData[index]['image']!,
+                            width: 130.w,
+                            height: 130.w,
                           ),
                         ),
-                        SizedBox(height: AppSpacing.xxl.h),
+                        SizedBox(height: 70),
 
                         // Title
                         Text(
@@ -234,7 +238,7 @@ class _OnboardingView extends StatelessWidget {
                   // Get Started / Next Button
                   SizedBox(
                     width: double.infinity,
-                    height: 50.h,
+                    height: 45.h,
                     child: ElevatedButton(
                       onPressed: isLastPage
                           ? onGetStarted
@@ -253,7 +257,7 @@ class _OnboardingView extends StatelessWidget {
                         ),
                       ),
                       child: Text(
-                        isLastPage ? 'Get Started' : 'Next',
+                        'Next',
                         style: textTheme.titleMedium?.copyWith(
                           color: Colors.white,
                           fontWeight: FontWeight.w600,

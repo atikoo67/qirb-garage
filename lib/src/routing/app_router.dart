@@ -6,6 +6,7 @@ import 'package:qirb_garage/src/routing/app_routes.dart';
 import 'package:qirb_garage/src/features/splash/presentation/screens/splash_screen.dart';
 import 'package:qirb_garage/src/features/auth/presentation/screens/login_screen.dart';
 import 'package:qirb_garage/src/features/auth/presentation/screens/signup_screen.dart';
+import 'package:qirb_garage/src/features/auth/presentation/screens/role_selection_screen.dart';
 import 'package:qirb_garage/src/features/auth/presentation/screens/forgot_password_screen.dart';
 
 import 'package:qirb_garage/src/features/home/presentation/screens/home_page.dart';
@@ -34,6 +35,11 @@ final GoRouter appRouter = GoRouter(
       path: AppRoutes.onboarding,
       name: 'onboarding',
       builder: (context, state) => const OnboardingPage(),
+    ),
+    GoRoute(
+      path: AppRoutes.roleSelection,
+      name: 'roleSelection',
+      builder: (context, state) => const RoleSelectionScreen(),
     ),
     GoRoute(
       path: AppRoutes.login,

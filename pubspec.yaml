@@ -90,6 +90,7 @@ flutter:
   assets:
     - assets/
     - assets/images/
+    - assets/onboarding/
     - assets/images/manual/
     - assets/images/sparepart/
     - assets/images/garage/

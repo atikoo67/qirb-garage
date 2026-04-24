@@ -43,7 +43,7 @@ class LoginScreen extends HookConsumerWidget {
 
               // Back Button
               IconButton(
-                onPressed: () => context.go(AppRoutes.onboarding),
+                onPressed: () => context.go(AppRoutes.home),
                 icon: const Icon(Icons.arrow_back, color: Colors.black),
                 padding: EdgeInsets.zero,
                 constraints: const BoxConstraints(),
@@ -287,24 +287,33 @@ class LoginScreen extends HookConsumerWidget {
               SizedBox(height: AppSpacing.xl.h),
 
               // Social Login Buttons
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  _SocialButton(
-                    icon: AppAssets.googleIcon,
-                    onPressed: () {},
+              SizedBox(
+                width: double.infinity,
+                height: 56.h,
+                child: OutlinedButton.icon(
+                  onPressed: () {},
+                  style: OutlinedButton.styleFrom(
+                    foregroundColor: Colors.black87,
+                    side: BorderSide(color: Colors.black12, width: 1.5),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(16.r),
+                    ),
+                    padding: EdgeInsets.symmetric(horizontal: AppSpacing.md.w),
                   ),
-                  SizedBox(width: AppSpacing.md.w),
-                  _SocialButton(
-                    icon: AppAssets.facebookIcon,
-                    onPressed: () {},
+                  icon: SvgPicture.asset(
+                    AppAssets.googleIcon,
+                    width: 22.w,
+                    height: 22.h,
                   ),
-                  SizedBox(width: AppSpacing.md.w),
-                  _SocialButton(
-                    icon: AppAssets.appleIcon,
-                    onPressed: () {},
+                  label: Text(
+                    'Continue with Google',
+                    style: tt.titleMedium?.copyWith(
+                      color: Colors.black87,
+                      fontWeight: FontWeight.w500,
+                      fontSize: 15.sp,
+                    ),
                   ),
-                ],
+                ),
               ),
 
               SizedBox(height: AppSpacing.xxxl.h),
@@ -333,39 +342,6 @@ class LoginScreen extends HookConsumerWidget {
 
               SizedBox(height: AppSpacing.xl.h),
             ],
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-class _SocialButton extends StatelessWidget {
-  const _SocialButton({
-    required this.icon,
-    required this.onPressed,
-  });
-
-  final String icon;
-  final VoidCallback onPressed;
-
-  @override
-  Widget build(BuildContext context) {
-    return InkWell(
-      onTap: onPressed,
-      borderRadius: BorderRadius.circular(12.r),
-      child: Container(
-        width: 56.w,
-        height: 56.h,
-        decoration: BoxDecoration(
-          color: const Color(0xFFF5F5F5),
-          borderRadius: BorderRadius.circular(12.r),
-        ),
-        child: Center(
-          child: SvgPicture.asset(
-            icon,
-            width: 24.w,
-            height: 24.h,
           ),
         ),
       ),

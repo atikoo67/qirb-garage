@@ -61,7 +61,7 @@ class _ProfileTab extends HookConsumerWidget {
             ),
             SizedBox(width: AppSpacing.sm.w),
             Text(
-              'AUTOCORE',
+              'QirbGarage',
               style: textTheme.titleLarge?.copyWith(
                 fontWeight: FontWeight.bold,
                 color: Colors.black,
